@@ -1,0 +1,540 @@
+<?php ?>
+<!-- 
+  fileName : Database
+  Arthur   : Ashraf Soudah , Ahmad Al Othman.
+  Data     : 05-03-2021
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+  * {
+    box-sizing: border-box;
+    text-align: center;
+    font-family:"Roboto";
+  
+    
+   
+  }
+  
+  body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+    background-color: #ffffff;
+    color: #000000;
+    
+    
+    
+  }
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+   
+    
+  }
+  
+  [class*="col-"] {
+    float: left;
+    padding: 15px;
+    
+  }
+  
+  .header {
+    padding-top: .5em;
+    padding-bottom: .5em;
+    border: 1px solid #a2a2a2;
+    background-color: #222f3e;
+    -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    position: fixed;
+    width: 100%;
+    padding: 0px;
+    top: 0;
+   
+  
+    
+      
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+   
+  }
+  
+  
+  h2,
+  h3,
+  a {
+    font-family:"Oswald";
+    color: #000000;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  
+  
+  .logo {
+    margin: 0;
+    font-size: 1.45em;
+  }
+  
+  .main-nav {
+    margin-top: 5px;
+    
+    
+  
+  }
+  .logo a,
+  .main-nav a {
+    padding: 10px 15px;
+    
+    text-align: center;
+    display: block;
+    
+  }
+  
+  .main-nav a {
+    color: #ffffff;
+    font-size: 20px;
+    font-family: "Oswald";
+    
+  
+  }
+  
+  .main-nav a:hover {
+    color: #000000;
+    
+  }
+  
+  
+  
+  span{
+      color: #ffffff;
+      background-color: #222f3e;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 45px;
+      
+      
+  }
+  .aside {
+    
+    padding: 15px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+  img{
+       width: 400px;
+       height: 400px;
+      
+       
+  }
+  .one{
+      width: 600px;
+       height: 400px;
+     padding-left: 20px;
+  }
+  .two{
+       width: 400px;
+       height: 400px;
+       margin-left: 25px;
+       
+       
+  }
+  #three{
+       width: 300px;
+       height: 300px;
+       padding-left: 130px;
+       
+       
+  
+         
+  }
+  /* For button: */
+  button {
+    border-radius: 4px;
+    background-color: #222f3e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 300px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  button:hover span {
+    padding-right: 16px;
+  }
+  
+  button:hover span:after {
+    opacity: 1;
+    
+  }
+  /* For video: */
+  iframe{
+      width:1100px;
+      height:400px;
+  }
+  .footer {
+   
+    color: #222f3e;
+    
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+  }
+  
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+    margin-top: 200px;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+  }
+  /* For navbar: */
+  @media (min-width: 769px) {
+    .header,
+    .main-nav {
+      display: flex;
+    }
+    
+    .header {
+      flex-direction: column;
+      align-items: center;
+      
+      
+    }
+  
+  }
+  
+  @media (min-width: 1025px) {
+    .header {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+  }
+  
+  
+  h4 { 
+    font-style: oblique;
+    font-size: 20px;
+    color:#ffffff
+  }
+  
+  .pFoot { 
+    font-family:"Oswald";
+    color: #f6f7f8;
+   
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+   /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
+  }
+  
+  a { 
+    color: #ffffff;
+    font-size: x-large;
+    
+    
+  }
+  
+  p { 
+   font-family:'Roboto';
+  }
+  h1 { 
+    font-family:'Oswald';
+  }
+  
+  
+  #col-9,#box,
+  h3{
+    background-color: red;
+    margin-left: 8%;
+   
+    box-sizing: border-box;
+    color: #fff;
+      font-size: 20px;
+      
+      line-height: 1.2;
+      
+      
+   
+  }
+  .pBox { 
+  
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 30px;
+    font-weight: normal;
+    margin-bottom: 15px;
+    font-size: 16px;
+      color: #d3d1d1;
+  }
+  
+  .pFoot2{
+    font-family: "Oswald";
+    margin: 50px;
+  }
+  
+  .aFoot{
+    margin: -7px;
+  }
+  
+  .pFoot3{
+    font-family: "Oswald";
+    margin: 27px;
+  }
+  
+  #LogoHead { 
+    width: 100px;
+    height: 100px;
+  }
+  
+  .divHead { 
+    display: flex;
+    padding: 5px;
+  }
+  
+  #div1Flex {
+    margin-top: 100px;
+  }
+  
+  #div2Flex {
+    margin-top: 150px;
+  }
+  
+  /* 
+   /* start img hover */ 
+  */ 
+  .container {
+    position: relative;
+    width: 50%;
+    max-width: 300px;
+    padding-left: 50%;
+    
+  }
+  .overlay {
+    position: relative; 
+    bottom: 0; 
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); /* Black see-through */ 
+    color: #f1f1f1; 
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+    
+  }
+  
+  .container:hover .overlay {
+    opacity: 1;
+  }
+  
+  
+  .hoverImg { 
+    
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-left: 24%;
+  }
+  
+  .buttonSearch { 
+    border-radius: 4px;
+    background-color: #222f3e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 130%;
+    padding: 15px;
+   width: 22%;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 0;
+   
+    
+  
+  }
+  #content-item {
+    width: 100%;
+   
+  }
+  #content-item .item{
+    height: 60vh;
+    overflow: hidden;
+    cursor: pointer;
+  
+    margin: 0;
+  }
+  #content-item .item img {
+  
+    opacity: .66;
+  }
+  #content-item .item:hover img{
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+    opacity:1;
+  }
+  
+  
+  /* end img hover */ 
+  
+  /* start fotos header */ 
+    .one1{
+        width: 100%;
+         height: 810px;
+         margin: 0;
+         opacity: 0.5;
+    }
+    .col-6:hover .one1 {
+      opacity: 5;
+     
+      }
+  
+    .two2{
+         width: 100%;
+         height: 810px;
+         margin: 0;
+         padding: 0;  
+         opacity: 0.5; 
+    }
+  
+    .col-3:hover .two2 {
+      opacity: 5;
+      }
+  
+    .three3{
+         width: 100%;
+         height: 402px;
+         opacity: 0.5; 
+        }
+  
+        .col-3:hover .three3 {
+          opacity: 5;
+          }
+  
+  /* end fotos header */ 
+  
+  
+  #spanLogo { 
+    color: red;
+   
+  }
+
+  #aboutImg { 
+    width: 100%;
+    height: 600px;
+    margin-top:  100px;
+    
+  }
+
+
+  
+</style>
+</head>
+<body>
+<!------ header ---->
+<header class="header">
+  <div class="divHead">
+  <img id="LogoHead" src="../img/Foto/001-virtual-reality.png" alt="Logo">
+
+    <h1 class="logo"><a href="#"><span id="spanLogo">VR.</span>Brillen</a></h1>
+    </div>
+  <ul class="main-nav">
+      <li><a href="../vrbrillen.php">Home</a></li>
+      <li><a href="./products.php">Shop</a></li>
+      <li><a href="./aboutUs.php">About</a></li>
+      <li><a href="./contact.php">Contact</a></li>
+      <!--Start (Search Search Bar and button) --> 
+     <li>
+       <div class="search-container">
+        <form action="/action_page.php">
+          <input type="text" placeholder="Search.." name="search">
+          <button class="buttonSearch" type="submit"><i  class="fa fa-search"></i></button>
+        </form>
+      </div>
+       
+      </li>
+      <!--End (Search Search Bar and button) -->  
+     <li><a href=""><i class="fa fa-user"></a></i></li> 
+     <li><a href=""><i class="fa fa-shopping-basket"></a></i></li> 
+  </ul>
+</header> 
+<body>
+  <h1>dsdsd</h1>
+    <div class="container">
+      
+    <div class="productFoto">
+      <div class="col-6 right">
+        <img src="img/VR-Headset-Compatible.jpg" alt="">
+   </div>
+ </div>
+      <div class="col-6">
+        
+        <div class="informatie">
+        <h1>Kijk naar de keuze</h1>
+        <p>Chania is the capital of the Chania region on the island of Crete.
+             The city can be divided in two parts, the old town and the modern city.
+          </p>
+          <button>Bestel </button>
+      </div>
+      </div>
+    </div>
+
+
+</body>
